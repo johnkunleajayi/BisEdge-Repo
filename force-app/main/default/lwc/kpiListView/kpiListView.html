@@ -1,0 +1,73 @@
+<template>
+    <lightning-card title="KPI Participants">
+        <template if:true={employees}>
+            <template for:each={employees} for:item="employee">
+                <div key={employee.Id} class="employee">
+                    <lightning-button label={employee.Employee__r.Name} data-id={employee.Id} onclick={toggleDetails}></lightning-button>
+                    <template if:true={employee.showDetails}>
+                        <lightning-record-view-form record-id={employee.Id} object-api-name="KPI_Result__c">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Site_Operator_Manager_Score__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Employee_Technical_Score_Appraisal_Total__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Manager_Technical_Score__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Technical_Score_Technical_Appraisal__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Mid_Year_Score_Technical_Employee__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Mid_Year_Score_Technical_Manager__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="MID_Year_Total__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Employee_Behavioural_Appraisal__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Manager_Behavioural_Appraisal_Feedback__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Total_Scores_Behavioural_Appraisal__c"></lightning-output-field>
+                                </div>
+
+
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Organisation_Ratio_Behavioural_Appraisal__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Organisation_Ratio_Technical_Appraisal__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Technical_Overall_Score__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Behavioural_Overall_Score__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Final_Rating__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="Grade__c"></lightning-output-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-output-field field-name="HR_Recommendation__c"></lightning-output-field>
+                                </div>
+
+
+
+                            </div>
+                        </lightning-record-view-form>
+                    </template>
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>

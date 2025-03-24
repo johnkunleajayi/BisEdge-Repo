@@ -1,0 +1,28 @@
+.progress-container {
+    text-align: center;
+}
+
+.line-container {
+    width: 300px;
+    height: 40px;
+    margin: 50px auto;
+}
+
+.circle-container {
+    width: 200px;
+    height: 200px;
+    margin: 50px auto;
+}
+
+.semi-container {
+    width: 200px;
+    height: 100px;
+    margin: 50px auto;
+}
+
+.progress-text {
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    color: black;
+}

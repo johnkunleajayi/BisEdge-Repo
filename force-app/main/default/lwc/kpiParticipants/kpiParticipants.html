@@ -1,0 +1,41 @@
+<template>
+    <lightning-card>
+        <div class="slds-media">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="utility:groups" alternative-text="Behavioral" title="Behavioral"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+                <h1 class="slds-text-heading_medium">KPI Participants</h1>
+            </div>
+        </div>
+        
+        <!-- Search input to filter employee names -->
+        <lightning-input 
+            type="search" 
+            placeholder="Search employees..." 
+            value={searchTerm} 
+            onchange={handleSearch}>
+        </lightning-input>
+
+        <!-- Show employee list only if searchTerm has a value -->
+        <template if:true={searchTerm}>
+            <template if:true={filteredEmployees}>
+                <template for:each={filteredEmployees} for:item="employee">
+                    <div key={employee.Id} class="employee">
+                        <lightning-button label={employee.Employee__r.Name} onclick={toggleDetails}></lightning-button>
+                        <template if:true={employee.showDetails}>
+                            <lightning-datatable
+                                data={employee.kpiDetails}
+                                columns={columns}
+                                key-field="id">
+                            </lightning-datatable>
+                        </template>
+                    </div>
+                </template>
+            </template>
+            <template if:false={filteredEmployees}>
+                <p>No employees found.</p>
+            </template>
+        </template>
+    </lightning-card>
+</template>

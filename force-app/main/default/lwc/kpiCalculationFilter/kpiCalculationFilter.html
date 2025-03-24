@@ -1,0 +1,43 @@
+<template>
+    <!-- Dropdown to select Performance Review Cycle -->
+    <div class="slds-media__figure">
+        <lightning-icon icon-name="utility:connected_apps" alternative-text="Technical" title="Technical"></lightning-icon>
+    </div>
+     <h1 style="font-weight: bold; font-size: 1.5em;">Technical</h1>
+    <lightning-combobox
+        name="reviewCycle"
+        label="Select Performance Review Cycle"
+        value={selectedReviewCycle}
+        placeholder="Choose Technical Review"
+        options={reviewCycleOptions}
+        onchange={handleCycleChange}>
+    </lightning-combobox>
+
+    <!-- Display clickable list of employee names after selecting a cycle -->
+    <template if:true={employeeList}>
+        
+        <h2 style="font-weight: bold; font-size: 1em;">These are Employees that participated in {selectedReviewCycle}</h2>
+        <ul>
+            <template for:each={employeeList} for:item="employee">
+                <li key={employee.employeeId}>
+                    <lightning-button 
+                        variant="base" 
+                        label={employee.employeeName} 
+                        onclick={handleEmployeeClick} 
+                        data-id={employee.employeeId}>
+                    </lightning-button>
+                </li>
+            </template>
+        </ul>
+    </template>
+
+    <!-- Display KPI table for selected employee if visible -->
+    <template if:true={isKpiVisible}>
+        <h2 style="font-weight: bold; font-size: 1em;">KPI Details for {selectedEmployeeName}</h2>
+        <lightning-datatable
+            key-field="Id"
+            data={kpiDetails}
+            columns={columns}>
+        </lightning-datatable>
+    </template>
+</template>
